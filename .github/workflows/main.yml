@@ -77,11 +77,8 @@ jobs:
         sudo make install
         sudo ldconfig /usr/local/lib
 
-    - name: Remove open62541-src # open62541-src/build/bin/libopen62541.so.1 is encountered a second time at /usr/share/perl/5.38/File/Find.pm line 88 in Makefile.PL
-      run: sudo rm -rf open62541-src
-
     - name: Perl Makefile
-      run: perl Makefile.PL
+      run: PERL_CORE=1 perl Makefile.PL
 
     - name: Make
       run: make
